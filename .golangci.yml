@@ -1,0 +1,59 @@
+run:
+  deadline: 5m
+  issues-exit-code: 1
+  tests: false
+
+issues:
+  max-same-issues: 15
+  max-issues-per-linter: 15
+  exclude-rules:
+    - path: generated\.go
+      linters:
+        - gofmt
+        - gocritic
+
+linters-settings:
+  govet:
+    check-shadowing: false
+  gofmt:
+    simplify: true
+  gocritic:
+    settings:
+      hugeParam:
+        sizeThreshold: 80 #default
+    enabled-tags:
+      - performance
+      - style
+      - experimental
+      - diagnostic
+  gocyclo:
+    min-complexity: 50
+  misspell:
+    locale: US
+
+linters:
+  enable:
+    - gocyclo
+    - gocritic
+    - gofmt
+    - goconst
+    - gosec
+    - golint
+    - gochecknoinits
+    - interfacer
+    - megacheck
+    - misspell
+    - unconvert
+    - maligned
+    - unparam
+    - depguard
+    - misspell
+    - nakedret
+    - prealloc
+    - scopelint
+    - govet
+    - staticcheck
+  disable:
+    - dupl
+    - errcheck
+  disable-all: false
